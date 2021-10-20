@@ -14,23 +14,20 @@ const config = require("./config/key");
 //   .then(() => console.log("DB connected"))
 //   .catch(err => console.error(err));
 
-const mongoose = require("mongoose");
-const connect = mongoose.connect(config.mongoURI,
-  {
-    useNewUrlParser: true, useUnifiedTopology: true,
-    useCreateIndex: true, useFindAndModify: false
-  })
-  .then(() => console.log('MongoDB Connected...'))
-  .catch(err => console.log(err));
+const mongoose = require('mongoose');
+
+mongoose.connect(config.mongoURI
+).then(() => console.log('MongoDB Connected...')) // 연결 잘 됐는지 확인 
+ .catch(err => console.log(err)) // 에러 날때 확인할려고 
 
 app.use(cors())
 
 //to not get any deprecation warning or error
 //support parsing of application/x-www-form-urlencoded post data
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 //to get json data
 // support parsing of application/json type post data
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cookieParser());
 
 app.use('/api/users', require('./routes/users'));
