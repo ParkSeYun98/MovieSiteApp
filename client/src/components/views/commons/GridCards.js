@@ -2,7 +2,7 @@ import React from 'react'
 import { Col } from 'antd'
 
 function GridCards(props) {
-    if (!props.landingPage) {
+    if (props.landingPage) {
         return (
             <Col lg={6} md={8} xs={24}> 
             {/*  한 column이 24사이즈, large 일때 사진 하나당 6사이즈 설정 =  한 줄에 4 사진
